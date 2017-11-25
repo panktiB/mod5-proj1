@@ -404,15 +404,16 @@ var resizePizzas = function(size) {
 
   // Changes the value for the size of the pizza above the slider
   function changeSliderLabel(size) {
+    var pizza = document.getElementById('pizzaSize').innerHTML; //save the element outside the case and use .getElementById
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        pizza = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        pizza = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        pizza = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -449,10 +450,26 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var newwidth;
+    //move the sizing switch case inside the function
+    switch(size) {
+        case "1":
+          newwidth = 25 + '%'; //change the decimals to % and remove return statements
+          break;
+        case "2":
+          newwidth = 33 + '%';
+          break;
+        case "3":
+          newwidth = 50 + '%';
+          break;
+        default:
+          console.log("bug in sizeSwitcher");
+      }
+    var ranPizza = document.querySelectorAll(".randomPizzaContainer"); //move the document.querySelectorAll() outside the loop
+    var length = ranPizza.length; //save the length of array outside the loop so it is not accesed each time loop is run
+    for (var i = 0; i < length; i++) {
+      //remove the call to the determineDx() function it is no longer necessary
+      ranPizza[i].style.width = newwidth;
     }
   }
 
