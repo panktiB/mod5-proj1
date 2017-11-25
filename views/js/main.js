@@ -528,8 +528,8 @@ function updatePositions() {
     phase.push(Math.sin(scrollTop / 1250 + i) * 100);
   }
   var max = items.length; //save the array length outside loop so it is not accesed at every run
-  for (var i = 0; i < max; i++) {
-    items[i].style.left = items[i].basicLeft + phase[i%5] + 'px';
+  for (var j = 0; j < max; j++) {
+    items[j].style.left = items[j].basicLeft + phase[j%5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
