@@ -520,11 +520,16 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    // document.body.scrollTop is no longer supported in Chrome.
-    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    var phase = Math.sin((scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  var scrollTop = document.documentElement.scrollTop; //declare variable scrollTop outside the loop
+  var phase = []; //declare an empty array for phase calculation
+  //due to %5 operator there are only 5 different values for phase. whatever i may be, i%5 will always be from
+  //0 to 4.
+  for(var i = 0; i < 5; i++) {
+    phase.push(Math.sin(scrollTop / 1250 + i) * 100);
+  }
+  var max = items.length; //save the array length outside loop so it is not accesed at every run
+  for (var i = 0; i < max; i++) {
+    items[i].style.left = items[i].basicLeft + phase[i%5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -549,8 +554,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var rows = windowHeight/2; 
   var number = rows * cols; //the number of pizzas required
   var move = document.getElementById('movingPizzas1'); //decalre move outside the loop 
+  var elem; //declare elem outside the loop so its not created in every run
   for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
