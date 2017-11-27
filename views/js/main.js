@@ -519,7 +519,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover'); //document.getElementsByClassName() is faster than document.querySelectorALL()
   var scrollTop = document.documentElement.scrollTop; //declare variable scrollTop outside the loop
   var phase = []; //declare an empty array for phase calculation
   //due to %5 operator there are only 5 different values for phase. whatever i may be, i%5 will always be from
@@ -555,7 +555,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var number = rows * cols; //the number of pizzas required
   var move = document.getElementById('movingPizzas1'); //decalre move outside the loop 
   var elem; //declare elem outside the loop so its not created in every run
-  for (var i = 0; i < 200; i++) {
+  //reducing the number of pizzas from 200 to 24
+  for (var i = 0; i < 24; i++) { 
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

@@ -31,6 +31,7 @@ Line 468 - move the document.querySelectorAll() outside the loop and change to d
 Line 469 - save the length of array outside the loop so it is not accesed each time loop is run
 Line 472 - remove the call to the determineDx() function it is no longer necessary
 Line 488 - declare pizzasDiv outside the loop
+Line 522 - document.getElementsByClassName() is faster than document.querySelectorALL()
 Line 523 - declare variable scrollTop outside the loop
 Line 524 - declare an empty array for phase calculation
 Line 527 - due to %5 operator there are only 5 different values for phase. whatever i may be, i%5 will always be from 0 to 4. so we split the loop into two, one for phase from 0 to 4 and one for positions that is 0 to items.length.
@@ -39,3 +40,4 @@ Line 551 - calculate the height of screen and calculate number of pizzas require
 Line 555 - calculating the number of pizzas required
 Line 556 - declare variable move initialised with document.getElementById() outside the loop
 Line 557 - declare elem outside the loop so its not created in every run
+Line 558 - reducing the number of pizzas from 200 to 24
