@@ -40,4 +40,4 @@ Line 551 - calculate the height of screen and calculate number of pizzas require
 Line 555 - calculating the number of pizzas required
 Line 556 - declare variable move initialised with document.getElementById() outside the loop
 Line 557 - declare elem outside the loop so its not created in every run
-Line 558 - reducing the number of pizzas from 200 to 24
+Line 558 - reducing the number of pizzas by dynamically calculating the correct number required

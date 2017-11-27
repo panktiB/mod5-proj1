@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var move = document.getElementById('movingPizzas1'); //decalre move outside the loop 
   var elem; //declare elem outside the loop so its not created in every run
   //reducing the number of pizzas from 200 to 24
-  for (var i = 0; i < 24; i++) { 
+  for (var i = 0; i < number; i++) { 
     elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
